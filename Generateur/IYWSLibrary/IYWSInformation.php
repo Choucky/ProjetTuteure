@@ -22,18 +22,29 @@ class IYWSInformation extends IYWSDatabase
 	 * \details	Récupération des informations stockées dans la base de données correspondant à la table informations
 	 */
 	public function IYWSInformation ($id){
+		parent::IYWSDatabase();
 		try{
-			$query = $this->db->query("SELECT * FROM INFORMATIONS WHERE id=".$id);
+            //Récupération des infos dans la BDD
+			$query = $this->db->query("SELECT * FROM INFORMATIONS WHERE id_info=" . $this->db->quote($id));
 			$query->setFetchMode(PDO::FETCH_OBJ);
 			$array = $query->fetch();
-			
-			$this->id = $array->id_info;
-			$this->title = $array->title;
-			$this->section = $array->section;
-			$this->nav = $array->nav;
-			$this->tagline = $array->tagline;
-			$this->footer = $array->footer;
-			
+
+            //Les informations existe on affecte les attributs
+            if( $array != false )
+            {
+			    $this->id = $array->id_info;
+			    $this->title = $array->title;
+			    $this->section = $array->section;
+			    $this->nav = $array->nav;
+			    $this->tagline = $array->tagline;
+			    $this->footer = $array->footer;
+	
+			    $this->error = IYWS_OK;
+            }
+            else
+            {
+                $this->error = IYWS_ERR_NOTEXISTS;
+            }
 		}
 		catch (Exception $e){
 			$this->error = IYWS_ERR_DB;
@@ -82,46 +93,89 @@ class IYWSInformation extends IYWSDatabase
 	
 	/**
 	 * \brief 	Setter du titre
-	 * \return	Void
+	 * \return	\e IYWSInformation
 	 * \details	Met à jour le titre du site.
+	 * \param 	\e $title Titre de l'information.
 	 */
 	public function setTitle($title){
 		$this->title = $title;
+		return $this;
 	}
 	
 	/**
 	 * \brief	Setter de la section
-	 * \return	Void
+	 * \return	\e IYWSInformation
 	 * \details	Met à jour le corps de texte du site.
+	 * \param	\e $section Corps de texte 
 	 */
 	public function setSection($section){
 		$this->section = $section;
+		return $this;
 	}
 	
 	/**
 	 * \brief	Setter du nav
-	 * \return	Void
+	 * \return	\e IYWSInformation
 	 * \details	Met à jour le menu de navigation
+	 * \param	\e $nav Menu de navigation du site
 	 */
 	public function setNav($nav){
 		$this->nav = $nav;
+		return $this;
 	}
 	
 	/**
 	 * \brief 	Setter du tagline
-	 * \return 	Void
+	 * \return 	\e IYWSInformation
 	 * \details	Met à jour le "slogan" du site
+	 * \param 	\e $tagline Slogan du site
 	 */
 	public function setTagline($tagline){
 		$this->tagline = $tagline;
+		return $this;
 	}
 	
 	/**
 	 * \brief	Setter du footer
-	 * \return	Void
+	 * \return	\e IYWSInformation
 	 * \details	Met à jour le pied de page du site
+	 * \param 	\e $footer Pied de page du site
 	 */
 	public function setFooter($footer){
 		$this->footer = $footer;
+		return $this;
+	}
+	
+	/**
+	 * \brief	Storage 
+	 * \details	Ajout des informations dans la base de données.
+	 * \return	true si la requête est exécuté sinon false
+	 */
+	public function store(){
+		try {
+            if( $this->id != NULL )
+            {
+                //On met à jour la base de données
+			    $query = $this->db->exec("UPDATE INFORMATIONS SET title=" . $this->db->quote($this->title) . "," 
+                                                            . "section=" . $this->db->quote($this->section) . ","
+                                                            . "nav=" . $this->db->quote($this->nav) . ","
+                                                            . "tagline=" . $this->db->quote($this->tagline) . ","
+                                                            . "footer=" . $this->db->quote($this->footer)
+                                                            . "WHERE id_info=" . $this->db->quote($this->id) 
+                                        );
+
+                var_dump($query);
+			    $this->error = IYWS_OK;
+			    return true;
+            }
+            else
+            {
+                $this->error = IYWS_ERR_NOTEXISTS;
+                return false;
+            }
+		} catch (Exception $e) {
+			$this->error = IYWS_ERR_DB;
+			return false;
+		}
 	}
 }

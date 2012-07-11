@@ -22,7 +22,8 @@ abstract class IYWSDatabase
 	protected function IYWSDatabase()
 	{	
 		try{
-			$this->db = new PDO("mysql:host=localhost;dbname=projetTut","root","");
+			 $this->db = new PDO("mysql:host=localhost;dbname=projetTut","root","");
+             $this->error = IYWS_OK;
 		}
 		catch (PDOException $e)
 		{

@@ -63,6 +63,7 @@ class IYWSDesign
 	 */
 	public function setCode($code){
 		$this->code = $code;
+		return $this;
 	}
 	
 	/**
@@ -72,6 +73,7 @@ class IYWSDesign
 	 */
 	public function setName($name){
 		$this->name = $name;
+		return $this;
 	}
 	
 	/**
@@ -81,5 +83,6 @@ class IYWSDesign
 	 */
 	public function setImage($image){
 		$this->image = $image;
+		return $this;
 	}
 }

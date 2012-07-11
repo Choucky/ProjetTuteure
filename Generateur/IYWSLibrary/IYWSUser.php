@@ -20,7 +20,7 @@ class IYWSUser
 	 */
 	public function IYWSUser($login){
 		try {			
-			$query = $this->db->query("SELECT * FROM USER WHERE login=".$login);
+			$query = $this->db->query("SELECT login, mail FROM USER WHERE login=".$login);
 			$query->setFetchMode(PDO::FETCH_OBJ);
 			$array = $query->fetch();
 
@@ -64,6 +64,7 @@ class IYWSUser
 	 */
 	public function setLogin($login){
 		$this->login = $login;
+		return $this;
 	}
 	
 	/**
@@ -73,15 +74,17 @@ class IYWSUser
 	 */
 	public function setMail($mail){
 		$this->mail = $mail;
+		return $this;
 	}
 	
 	/**
 	 * \brief 	Setter du mot de passe de l'utilisateur recensé.
 	 * \return	Void
 	 * \details	Met à jour le mot de passe de l'utilisateur.
-	 */
+	 *//*
 	public function setPwd($oldpwd,$newpwd){
-		$this->pwd = $oldpwd;
-		$this->oldpwd = $newpwd;
-	}
+		//faire requete pour verifier pwd = oldpwd
+		 * si retourne quelque chose change le pwd sinon non
+		 * ne pas recuperer le pwd de la base de donnees 
+	}*/
 }
