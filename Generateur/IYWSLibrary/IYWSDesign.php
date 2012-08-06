@@ -6,9 +6,9 @@
  * \brief	Définit une structure de données pour les design du site.
  */
 
-require_once 'IYWSDatabase';
+require_once "IYWSDatabase.php";
 
-class IYWSDesign
+class IYWSDesign extends IYWSDatabase
 {
 	private $code;
 	private $name;
@@ -18,19 +18,20 @@ class IYWSDesign
 	 * \brief	Constructeur de la classe IYWSDesign
 	 * \details	Récupération des informations stockées dans la base de données correspondant à la table DESIGN.
 	 */
-	public function IYWSUser($code){
+	public function IYWSDesign($id){
 		parent::IYWSDatabase();
 		try {
 			//Récupération des informations dans la base de données
-			$query = $this->db->query("SELECT * FROM USER WHERE code=".$code);
+			$query = $this->db->query("SELECT * FROM DESIGN WHERE id_design=". $this->db->quote($id));
 			$query->setFetchMode(PDO::FETCH_OBJ);
 			$array = $query->fetch();
 
 			//Si les infos existe alors on affecte les attributs sinon on retourne une erreur
 			if( $array != false ){
-				$this->code = $array->code;
+				$this->id = $array->id_design;
 				$this->name = $array->name;
 				$this->image = $array->image;
+				$this->code = $array->code;
 				
 				$this->error = IYWS_OK;
 			}
@@ -111,10 +112,10 @@ class IYWSDesign
 			{
 				//On met à jour la base de données
 				$query = $this->db->exec("UPDATE DESIGN SET name=" . $this->db->quote($this->name) . ","
-						. "image=" . $this->db->quote($this->image) . ","
-						. "code=" . $this->db->quote($this->code)
-						. "WHERE id_design=" . $this->db->quote($this->id)
-				);
+														. "image=" . $this->db->quote($this->image) . ","
+														. "code=" . $this->db->quote($this->code)
+														. "WHERE id_design=" . $this->db->quote($this->id)
+										);
 	
 				var_dump($query);
 				$this->error = IYWS_OK;
