@@ -59,14 +59,6 @@ class IYWSUser extends IYWSDatabase
 	}
 	
 	/**
-	 * \brief	Getter de toutes les informations recensé.
-	 * \return	\e String représentant les dernières informations valide enregistrées
-	 
-	public function getAllInformations(){
-		
-	}*/
-	
-	/**
 	 * \brief	Setter du login de l'utilisateur recensé.
 	 * \return	\e IYWSUser
 	 * \details	Met à jour le login de l'utilisateur.
