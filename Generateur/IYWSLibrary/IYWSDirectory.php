@@ -29,7 +29,7 @@ class IYWSDirectory extends IYWSDatabase {
 	 * \return    	\e IYWSDatabase représentant une instance de connexion à la
 	 *				base de données.
 	 */
-	public static function Instance(){
+	public static function instance(){
 		if( is_null( self::$instance ) )
 		{
 			self::$instance = new IYWSDirectory(); 
@@ -45,25 +45,27 @@ class IYWSDirectory extends IYWSDatabase {
 	 * \param	\e $login 	Login de l'utilisateur.
 	 * \param	\e $pwd		Mot de passe de l'utilisateur.
 	 */
-	public function Authentication ($login, $pwd){
+	public function authentication ($login, $pwd){
 		try{
 			$query = $this->db->query	("	SELECT id_user, login FROM USER WHERE login=".$this->db->quote($login).
-																   "AND pwd=".$this->db->quote($pwd) 
+																   "AND pwd=".$this->db->quote(md5($pwd)) 
 										);
 			$query->setFetchMode(PDO::FETCH_OBJ);
 			$array = $query->fetch();
 			
-			if ($array != false && $array->id_user == $this->id){
+			if ($array != false && $array->login==$login){
 				$user = new IYWSUser($array->login);
 				
 				$this->error = IYWS_OK;
 				return $user;
 			}else {
 				$this->error = IYWS_ERR_NOTEXISTS;
+				echo "false1";
 				return false;
 			}
 		}catch (Exception $e){
 			$this->error = IYWS_ERR_DB;
+			echo "false2";
 			return false;
 		}
 	}

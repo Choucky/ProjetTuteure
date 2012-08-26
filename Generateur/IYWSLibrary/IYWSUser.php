@@ -92,14 +92,14 @@ class IYWSUser extends IYWSDatabase
 		//ne pas recuperer le pwd de la base de donnees
 		//Si retourne les bons id alors on change les pwd
 		try{
-			$query = $this->db->query("SELECT id_user, login FROM USER WHERE pwd=".$this->db->quote($oldpwd).
+			$query = $this->db->query("SELECT id_user, login FROM USER WHERE pwd=".$this->db->quote(md5($oldpwd)).
 																	   "AND login=".$this->db->quote($this->login));
 			$query->setFetchMode(PDO::FETCH_OBJ);
 			$array = $query->fetch();
 			
 			//si retourne quelque chose change le pwd sinon non 
 			if ($array != false && $array->id_user == $this->id){
-				$query = $this->db->exec("UPDATE USER SET pwd=".$this->db->quote($newpwd)
+				$query = $this->db->exec("UPDATE USER SET pwd=".$this->db->quote(md5($newpwd))
 													. "WHERE login=" . $this->db->quote($this->login)
 										);
 				
@@ -151,7 +151,7 @@ class IYWSUser extends IYWSDatabase
 	 * \param 	\e $footer pied de page du site
 	 * \param 	\e $id_design id du design du site
 	 */
-	public function AddInformations ($title,$section,$nav,$tagline,$footer,$id_design){
+	public function addInformations ($title,$section,$nav,$tagline,$footer,$id_design){
 		try {
 				$donnees = $this->db->exec("	INSERT INTO INFORMATIONS (title,section,nav,tagline,footer,id_user,id_design) 
 												VALUES ("	.$this->db->quote($title).","
@@ -187,7 +187,7 @@ class IYWSUser extends IYWSDatabase
 	 * \return	IYWSInformation
 	 * \param	\e $information instance d'information
 	 */
-	public function DeleteInformations ($information){
+	public function deleteInformations ($information){
 		try {
 			if ($information instanceof IYWSInformation){
 				$query = $this->db->exec(	"DELETE FROM INFORMATIONS WHERE id_info=".$this->db->quote($information->getId()));

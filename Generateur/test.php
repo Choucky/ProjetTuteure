@@ -67,9 +67,9 @@
   	var_dump($user->store());
     echo $user->getError();*/
     /*$user = new IYWSUser("epoulin");
-    $receve = $user->AddInformations("title2","section","nav","tagline","footer",1);
+    $receve = $user->addInformations("title2","section","nav","tagline","footer",1);
     var_dump($receve);
-    $user->DeleteInformations($receve);
+    $user->deleteInformations($receve);
 	echo $user->getError();*/
 	
 	/**
@@ -80,21 +80,21 @@
 	echo "<br /> Test de IYWSDirectory.php <br />";
 	
 	//Ajout d'un utilisateur
-	/*IYWSDirectory::Instance()->getError();
-	var_dump(IYWSDirectory::Instance()->addUser("mailDirectory10","pwdDirectory10","loginDirectory10"));
-	IYWSDirectory::Instance()->getError();*/
+	/*IYWSDirectory::instance()->getError();
+	var_dump(IYWSDirectory::instance()->addUser("mailDirectory10","pwdDirectory10","loginDirectory10"));
+	IYWSDirectory::instance()->getError();*/
 	
 	//Ajout d'un design
-	/*IYWSDirectory::Instance()->getError();
-	var_dump(IYWSDirectory::Instance()->addDesign("nameDirectory","imageDirectory","codeDirectory"));
-	IYWSDirectory::Instance()->getError();*/
+	/*IYWSDirectory::instance()->getError();
+	var_dump(IYWSDirectory::instance()->addDesign("nameDirectory","imageDirectory","codeDirectory"));
+	IYWSDirectory::instance()->getError();*/
 	
 	//Suppression d'un design
-	$design = IYWSDirectory::Instance()->addDesign("nameDirectory4","imageDirectory4","codeDirectory4");
-	var_dump(IYWSDirectory::Instance()->deleteDesign($design));
+	/*$design = IYWSDirectory::instance()->addDesign("nameDirectory4","imageDirectory4","codeDirectory4");
+	var_dump(IYWSDirectory::instance()->deleteDesign($design));*/
 		
 	//Authentification
-	/*IYWSDirectory::Instance()->getError();
-	var_dump(IYWSDirectory::Instance()->Authentication("loginDirectory","pwdDirectory"));
-	IYWSDirectory::Instance()->getError();*/
+	IYWSDirectory::instance()->getError();
+	var_dump(IYWSDirectory::instance()->Authentication("epoulin","elodie"));
+	IYWSDirectory::Instance()->getError();
 ?>
