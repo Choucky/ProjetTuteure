@@ -71,6 +71,93 @@ class IYWSDirectory extends IYWSDatabase {
 	}
 	
 	/**
+	 * \brief	Getter de tous les utilisateurs recensés
+	 * \return 	\e Array représentant tous les utilisateurs existants.
+	 */
+	public function getAllUser(){
+		try{
+			$query = $this->db->query	("	SELECT login FROM USER ");
+			$query->setFetchMode(PDO::FETCH_OBJ);
+			$array = $query->fetchAll();
+	
+			$tab = array();
+	
+			if ($array != false){
+				foreach ($array as $a){
+					$user = new IYWSUser($a->login);
+					array_push($tab, $user);
+				}
+				$this->error = IYWS_OK;
+				return $tab;
+			}else{
+				$this->error = IYWS_ERR_NOTEXISTS;
+				return false;
+			}
+		}catch (Exception $e){
+			$this->error = IYWS_ERR_DB;
+			return false;
+		}
+	}
+	
+	/**
+	 * \brief	Getter de toutes les informations rencensées.
+	 * \return 	\e Array représentant toutes les informations existantes.
+	 */
+	public function getAllInformations(){
+		try{
+			$query = $this->db->query	("	SELECT id_info FROM INFORMATIONS ");
+			$query->setFetchMode(PDO::FETCH_OBJ);
+			$array = $query->fetchAll();
+	
+			$tab = array();
+	
+			if ($array != false){
+				foreach ($array as $a){
+					$info = new IYWSInformation($a->id_info);
+					array_push($tab, $info);
+				}
+				$this->error = IYWS_OK;
+				return $tab;
+			}else{
+				$this->error = IYWS_ERR_NOTEXISTS;
+				return false;
+			}
+		}catch (Exception $e){
+			$this->error = IYWS_ERR_DB;
+			return false;
+		}
+	}
+	
+	/**
+	 * \brief	Getter de tous les designs recensés
+	 * \return 	\e Array représentant tous les designs existants.
+	 */
+	public function getAllDesign(){
+		try{
+			$query = $this->db->query	("	SELECT id_design FROM DESIGN ");
+			$query->setFetchMode(PDO::FETCH_OBJ);
+			$array = $query->fetchAll();
+	
+			$tab = array();
+				
+			if ($array != false){
+				foreach ($array as $a){
+					$design = new IYWSDesign($a->id_design);
+					array_push($tab, $design);
+				}
+				$this->error = IYWS_OK;
+				return $tab;
+			}else{
+				$this->error = IYWS_ERR_NOTEXISTS;
+				return false;
+			}
+		}catch (Exception $e){
+			$this->error = IYWS_ERR_DB;
+			return false;
+		}
+	}
+	
+	/**
 	 * \brief	Fonction ajout d'un utilisateur du site web.
 	 * \return	IYWSUser
 	 * \param	\e $mail  Mail de l'utilisateur.

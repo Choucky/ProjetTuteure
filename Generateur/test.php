@@ -71,7 +71,10 @@
     var_dump($receve);
     $user->deleteInformations($receve);
 	echo $user->getError();*/
-	
+    	
+    /*$user = new IYWSUser("pouet");
+    var_dump($user->getAllInfoOwned());*/
+    
 	/**
 	 * TEST DE DIRECTORY
 	 */
@@ -94,7 +97,16 @@
 	var_dump(IYWSDirectory::instance()->deleteDesign($design));*/
 		
 	//Authentification
-	IYWSDirectory::instance()->getError();
+	/*IYWSDirectory::instance()->getError();
 	var_dump(IYWSDirectory::instance()->Authentication("epoulin","elodie"));
-	IYWSDirectory::Instance()->getError();
+	IYWSDirectory::Instance()->getError();*/
+	
+	//getAllDesign
+	/*var_dump(IYWSDirectory::instance()->getAllDesign());*/
+	
+	//getAllUser
+	/*var_dump(IYWSDirectory::instance()->getAllUser());*/
+	
+	//getAllInformations
+	/*var_dump(IYWSDirectory::instance()->getAllInformations());*/
 ?>

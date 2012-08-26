@@ -58,6 +58,7 @@ class IYWSUser extends IYWSDatabase
 		return $this->mail;
 	}
 	
+	
 	/**
 	 * \brief	Setter du login de l'utilisateur recensé.
 	 * \return	\e IYWSUser
@@ -78,6 +79,35 @@ class IYWSUser extends IYWSDatabase
 	public function setMail($mail){
 		$this->mail = $mail;
 		return $this;
+	}
+	
+	/**
+	 * \brief	Getter de toutes les informations rencensées d'un utilisateur donné.
+	 * \return 	\e Array représentant toutes les informations existantes d'un utilisateur donné.
+	 */
+	public function getAllInfoOwned(){
+		try{
+			$query = $this->db->query	("	SELECT id_info FROM INFORMATIONS WHERE id_user=".$this->db->quote($this->id));
+			$query->setFetchMode(PDO::FETCH_OBJ);
+			$array = $query->fetchAll();
+	
+			$tab = array();
+	
+			if ($array != false){
+				foreach ($array as $a){
+					$info = new IYWSInformation($a->id_info);
+					array_push($tab, $info);
+				}
+				$this->error = IYWS_OK;
+				return $tab;
+			}else{
+				$this->error = IYWS_ERR_NOTEXISTS;
+				return false;
+			}
+		}catch (Exception $e){
+			$this->error = IYWS_ERR_DB;
+			return false;
+		}
 	}
 	
 	/**
