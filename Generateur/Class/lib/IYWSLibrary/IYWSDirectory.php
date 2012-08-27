@@ -168,7 +168,7 @@ class IYWSDirectory extends IYWSDatabase {
 		try{
 			$donnees = $this->db->exec	("	INSERT INTO USER (mail, pwd, login) 
 											VALUES ("	.$this->db->quote($mail).","
-														.$this->db->quote($pwd).","
+														.$this->db->quote(md5($pwd)).","
 														.$this->db->quote($login).")"
 										);
 			 if ($donnees == 1){
