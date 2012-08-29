@@ -16,6 +16,7 @@ class IYWSInformation extends IYWSDatabase
 	private $nav;
 	private $tagline;
 	private $footer;
+	private $id_design;
 	
 	/**
 	 * \brief	Constructeur de la classe IYWSInformation
@@ -38,6 +39,7 @@ class IYWSInformation extends IYWSDatabase
 			    $this->nav = $array->nav;
 			    $this->tagline = $array->tagline;
 			    $this->footer = $array->footer;
+			    $this->id_design = $array->id_design;
 	
 			    $this->error = IYWS_OK;
             }
@@ -89,6 +91,14 @@ class IYWSInformation extends IYWSDatabase
 	 */
 	public function getFooter(){
 		return $this->footer;
+	}
+	
+	/**
+	 * \brief	Getter de l'id du design recensé.
+	 * \return	\e Int représentant l'id du design de l'information enregistré.
+	 */
+	public function getIdDesign(){
+		return $this->id_design;
 	}
 	
 	/**
@@ -147,6 +157,17 @@ class IYWSInformation extends IYWSDatabase
 	}
 	
 	/**
+	 * \brief	Setter de l'id du design
+	 * \return	\e IYWSInformation
+	 * \details	Met à jour le design du site pour une information donné
+	 * \param 	\e $id_design Id du design du site
+	 */
+	public function setIdDesign($id_design){
+		$this->id_design = $id_design;
+		return $this;
+	}
+	
+	/**
 	 * \brief	Storage 
 	 * \details	Ajout des informations dans la base de données.
 	 * \return	true si la requête est exécuté sinon false
@@ -160,7 +181,8 @@ class IYWSInformation extends IYWSDatabase
                                                             . "section=" . $this->db->quote($this->section) . ","
                                                             . "nav=" . $this->db->quote($this->nav) . ","
                                                             . "tagline=" . $this->db->quote($this->tagline) . ","
-                                                            . "footer=" . $this->db->quote($this->footer)
+                                                            . "footer=" . $this->db->quote($this->footer). ","
+                                                            . "id_design=" . $this->db->quote($this->id_design)
                                                             . "WHERE id_info=" . $this->db->quote($this->id) 
                                         );
 

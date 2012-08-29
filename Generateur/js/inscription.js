@@ -117,7 +117,7 @@ function validInscription()
 
                 if( response == "error" )
                 {
-                    alert( "L'inscription a échouhé. Veuillez ré-essayer de vous enregistrer un peu plus tard.");
+                    alert( "L'inscription a échoué. Veuillez ré-essayer de vous enregistrer un peu plus tard.");
                 }
                 else
                 {
