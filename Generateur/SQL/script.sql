@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS USER;
 create table USER(
     id_user int not null auto_increment,
     mail varchar(50),
-    pwd varchar(30),
+    pwd text,
     login varchar(20) unique,
     primary key (id_user)
 )engine=InnoDB;

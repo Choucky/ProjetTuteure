@@ -79,9 +79,11 @@ class Layout
                                             <div class="ca-content">
                                                 <h2 class="ca-main"><span style="color:green;">SITE</span><br />Se connecter</h2>
                                                 <h3 class="ca-sub">
-                                                    <input type="text" placeholder="Pseudonyme" class="emptyField"/><br />
-                                                    <input type="password" placeholder="Mot de passe" class="emptyField"/><br />
-                                                    <input type="submit" value="Valider" id="authenticationSubmit"/>
+                                                    <form name="authentication" action="wall.php" method="post">
+                                                        <input type="text" placeholder="Pseudonyme" class="emptyField" name="login" /><br />
+                                                        <input type="password" placeholder="Mot de passe" class="emptyField" name="pwd" /><br />
+                                                        <input type="submit" value="Valider" id="authenticationSubmit"/>
+                                                    </form>
                                                 </h3>
                                             </div>
                                         </a>                    
@@ -124,7 +126,43 @@ class Layout
                     </head>
                     <body>
                         <!-- Start container -->
-                        <div class="content">';
+                        <div class="content">
+                            <!-- DESSIN DES CERCLES -->
+                            <ul class="ca-menu">
+                                    <li>
+                                        <a href="wall.php">
+                                            <span class="ca-icon">24</span>
+                                            <div class="ca-content">
+                                                <h2 class="ca-main"><span style="color:blue;">IMAGINE</span><br />Mon wall</h2>
+                                                <h3 class="ca-sub">Accès à mes sites.</h3>
+                                            </div>
+                                        </a>                    </li>
+                                    <li>
+                                        <a href="mailto:elodie16.p@gmail.com">
+                                            <span class="ca-icon">c</span>
+                                            <div class="ca-content">
+                                                <h2 class="ca-main"><span style="color:orange;">YOUR</span><br />Nous contacter</h2>
+                                                <h3 class="ca-sub">Cliquez puis envoyez !</h3>
+                                            </div>
+                                        </a>                    </li>
+                                    <li>
+                                        <a href="myAccount.php">
+                                            <span class="ca-icon">wx</span>
+                                            <div class="ca-content">
+                                                <h2 class="ca-main"><span style="color:red;">WEB</span><br />Mon compte</h2>
+                                                <h3 class="ca-sub">Paramètres de mon compte.</h3>
+                                            </div>
+                                        </a>                    </li>
+                                    <li>
+                                        <a href="logout.php">
+                                            <span class="ca-icon">U</span>
+                                            <div class="ca-content">
+                                                <h2 class="ca-main"><span style="color:green;">SITE</span><br />Se déconnecter</h2>
+                                                <h3 class="ca-sub">À bientôt sur Imagine Your WebSite !</h3>
+                                            </div>
+                                        </a>                    
+                                    </li>
+                                </ul>';
     }
 
     /**

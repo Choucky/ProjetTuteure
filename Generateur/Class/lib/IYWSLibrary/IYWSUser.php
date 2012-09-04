@@ -13,7 +13,6 @@ class IYWSUser extends IYWSDatabase
 {
 	private $login;
 	private $mail;
-	private $pwd;
 
 	/**
 	 * \brief	Constructeur de la classe IYWSUser
@@ -102,7 +101,7 @@ class IYWSUser extends IYWSDatabase
 				return $tab;
 			}else{
 				$this->error = IYWS_ERR_NOTEXISTS;
-				return false;
+				return array();
 			}
 		}catch (Exception $e){
 			$this->error = IYWS_ERR_DB;
@@ -134,11 +133,14 @@ class IYWSUser extends IYWSDatabase
 										);
 				
 				$this->error = IYWS_OK;
+                return true;
 			}else {
 				$this->error = IYWS_ERR_NOTEXISTS;
+                return false;
 			}
 		} catch (Exception $e){
 			$this->error = IYWS_ERR_DB;
+            return false;
 		}
 	}
 	
@@ -156,7 +158,6 @@ class IYWSUser extends IYWSDatabase
 														. "WHERE login=" . $this->db->quote($this->login)
 										);
 	
-				var_dump($query);
 				$this->error = IYWS_OK;
 				return true;
 			}
@@ -235,6 +236,7 @@ class IYWSUser extends IYWSDatabase
 			}
 		} catch (Exception $e) {
 			$this->error = IYWS_ERR_DB;
+			return false;
 		}
 	}
 }

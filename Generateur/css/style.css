@@ -19,6 +19,7 @@ main {
 	text-align: center;
 	margin-right: 10px;
 	padding-left : 20px;
+    margin-top : 30px;
 
 
 }
@@ -371,9 +372,15 @@ details {
 }
 
 
+table
+{
+border-collapse:collapse;
+}
+
 /* inscription.php */
 
-#enterInscription {
+/* #enterMyAccount -> myAccount.php */
+#enterInscription, #enterMyAccount {
 	width: 960px;
 	position: relative;
 	margin-top: 10px;
@@ -409,4 +416,39 @@ details {
     padding-right : 2%;
     font-size : 140%;
     float : right;
+}
+
+/* myAccount.php */
+#msg
+{
+    font-size : 200%;
+    text-align : center;
+}
+
+#tableMyAccount
+{
+    color : blue;
+    font-size : 120%;
+}
+
+#tableMyAccount td
+{
+    padding : 8px;
+}
+
+#attention
+{
+    color : red;
+}
+
+
+/* wall.php */
+.abox:hover
+{
+    color : purple;
+}
+
+.abox
+{
+    font-size : 150%;
 }

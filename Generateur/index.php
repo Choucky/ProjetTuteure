@@ -1,8 +1,25 @@
 <?php
 
+    session_start();
+
+    // Si l'utilisateur a bien démarré une session, on le redirige vers son wall
+    if( isset( $_SESSION['user'] ) )
+    {
+        header("Location: wall.php");   
+    }
+
     require_once "imagineyourwebsite.inc.php";
     echo Layout::header('IYWS - Accueil');
+    
+    // On regarde si l'on doit afficher un message d'erreur
+    $error = isset( $_GET['error'] ) ? $_GET['error'] : 0;
 
+    switch( $error )
+    {
+        case 1 :
+            echo "<h1 style='color:red;text-align:center;'>L'authentification a échoué. Veuillez recommencer.</h1>";
+            break;
+    }
 ?>
  
     <!-- IMAGES -->    

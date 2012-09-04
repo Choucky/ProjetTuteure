@@ -60,12 +60,10 @@ class IYWSDirectory extends IYWSDatabase {
 				return $user;
 			}else {
 				$this->error = IYWS_ERR_NOTEXISTS;
-				echo "false1";
 				return false;
 			}
 		}catch (Exception $e){
 			$this->error = IYWS_ERR_DB;
-			echo "false2";
 			return false;
 		}
 	}
@@ -91,7 +89,7 @@ class IYWSDirectory extends IYWSDatabase {
 				return $tab;
 			}else{
 				$this->error = IYWS_ERR_NOTEXISTS;
-				return false;
+				return array();
 			}
 		}catch (Exception $e){
 			$this->error = IYWS_ERR_DB;
@@ -120,7 +118,7 @@ class IYWSDirectory extends IYWSDatabase {
 				return $tab;
 			}else{
 				$this->error = IYWS_ERR_NOTEXISTS;
-				return false;
+				return array();
 			}
 		}catch (Exception $e){
 			$this->error = IYWS_ERR_DB;
@@ -149,7 +147,7 @@ class IYWSDirectory extends IYWSDatabase {
 				return $tab;
 			}else{
 				$this->error = IYWS_ERR_NOTEXISTS;
-				return false;
+				return array();
 			}
 		}catch (Exception $e){
 			$this->error = IYWS_ERR_DB;

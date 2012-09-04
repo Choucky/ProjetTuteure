@@ -1,5 +1,13 @@
 <?php
 
+    session_start();
+
+    // Si l'utilisateur a bien démarré une session, on le redirige vers son wall
+    if( isset( $_SESSION['user'] ) )
+    {
+        header("Location: wall.php");   
+    }
+
     require_once "imagineyourwebsite.inc.php";
     echo Layout::header('IYWS - Inscription');
 
@@ -29,7 +37,7 @@
             <div id="instructions">
                         <b><u>Conditions Générales d'Utilisation</u></b><br /><br />
                     
-                        En vous connectant sur le site www.imagineyourwebsite.com, vous vous engagez à respecter les présentes Conditions Générales d'Utilisation du site imagineyourwebsite.com.com qui seront susceptibles d'être modifiées librement à tout moment. Il vous est donc conseillé de vous référer régulièrement à la dernière version des Conditions Générales d'Utilisation disponibles en permanence sur le site. Toute personne "surfant" sur le site www.imagineyourwebsite.com est qualifiée d'"Utilisateur" par les présentes Conditions Générales d'Utilisation, et est à ce titre assujettie à son respect.<br /><br />
+                        En vous connectant sur le site www.imagineyourwebsite.com, vous vous engagez à respecter les présentes Conditions Générales d'Utilisation du site imagineyourwebsite.com qui seront susceptibles d'être modifiées librement à tout moment. Il vous est donc conseillé de vous référer régulièrement à la dernière version des Conditions Générales d'Utilisation disponibles en permanence sur le site. Toute personne "surfant" sur le site www.imagineyourwebsite.com est qualifiée d'"Utilisateur" par les présentes Conditions Générales d'Utilisation, et est à ce titre assujettie à son respect.<br /><br />
 
                         Nos services sont réservés aux personnes juridiquement capables de souscrire des contrats en droit français. Nos services ne sont pas disponibles pour les mineurs de moins de 18 ans, hormis sous l'autorité et la surveillance expresse de leurs parents ou de leur tuteur légal.<br /><br />
 
