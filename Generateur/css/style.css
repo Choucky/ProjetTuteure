@@ -452,3 +452,10 @@ border-collapse:collapse;
 {
     font-size : 150%;
 }
+
+/* webSite.php */
+#error
+{
+    color : red;
+    font-size : 140%;
+}

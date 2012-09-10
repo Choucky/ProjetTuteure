@@ -11,7 +11,7 @@
 
     // CONTENU DE myAccount DE L'UTILISATEUR
     $user = new IYWSUser( $_SESSION['user'] );
-    echo Layout::headerLogged('IYWS - Accueil');
+    echo Layout::headerLogged('IYWS - Mes paramètres');
 
 ?>
     <!-- Contenu de la page -->

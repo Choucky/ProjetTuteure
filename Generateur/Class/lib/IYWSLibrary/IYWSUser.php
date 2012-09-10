@@ -236,7 +236,6 @@ class IYWSUser extends IYWSDatabase
 			}
 		} catch (Exception $e) {
 			$this->error = IYWS_ERR_DB;
-			return false;
 		}
 	}
 }

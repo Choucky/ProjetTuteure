@@ -10,7 +10,7 @@
 
     require_once "imagineyourwebsite.inc.php";
     echo Layout::header('IYWS - Accueil');
-    
+
     // On regarde si l'on doit afficher un message d'erreur
     $error = isset( $_GET['error'] ) ? $_GET['error'] : 0;
 

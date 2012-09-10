@@ -118,7 +118,7 @@ class IYWSDirectory extends IYWSDatabase {
 				return $tab;
 			}else{
 				$this->error = IYWS_ERR_NOTEXISTS;
-				return array();
+				return false;
 			}
 		}catch (Exception $e){
 			$this->error = IYWS_ERR_DB;
@@ -147,7 +147,7 @@ class IYWSDirectory extends IYWSDatabase {
 				return $tab;
 			}else{
 				$this->error = IYWS_ERR_NOTEXISTS;
-				return array();
+				return false;
 			}
 		}catch (Exception $e){
 			$this->error = IYWS_ERR_DB;

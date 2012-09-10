@@ -41,24 +41,25 @@
             if( $i->getIdDesign() == $d->getId() )
             {
                 echo    '<div class="abox">
-                            <a href="#">
+                            <a href="webSite.php?design=' . $i->getIdDesign() . '&info=' .$i->getId() .'">
                                 <img src="images/' . $d->getImage() . '" alt=' . $d->getImage() . ' width="289" height="175" class="wallImg" />
                             </a>
-                            <b>' . $i->getTitle() . '</b>
+                            <b>	
+                            	' . $i->getTitle() . ' 
+                            </b>
+                            &nbsp
+                            &nbsp
+                            <input type="submit" value="supprimer" style="color:red;" onClick="validDeleteWebsite('.$i->getId().');"/>
                             
-                        </div>';
-                echo    '<div class="abox">
-                			<a href="#">
-                				<img src="images/play.jpg" width="289" height="175" class="wallImg" />
-                			</a>
-                			<b> Créer un nouveau site ! </b>
-                
-                		</div>';
-                
+                        </div>';               
             }
+            
+            
         }
+                
     }
     echo '</main>';
-
+    
+    echo '<script type="text/javascript" src="js/deleteWebsite.js"></script>';
 
     echo Layout::footer();
