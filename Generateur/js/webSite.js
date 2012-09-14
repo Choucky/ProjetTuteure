@@ -32,3 +32,19 @@ function replaceInfo()
     xmlhttp.send();
 }
 
+
+//===================================================
+//               modifyField( id, text)
+//---------------------------------------------------
+// Permet la modification en temps réel d'un champ
+// dont l'id est donné en parametre.
+// id : valeur de l'id recherché
+// text : valeur a remplacer dans la balise id
+// Appel : onChange(this.value) -> ../webSite.php
+//===================================================
+
+function modifyField( id, text )
+{
+    var tab = ["title", "tagline", "sidebar", "section", "footer-outer-block"];
+    document.getElementById(tab[id]).innerHTML = text;
+}
