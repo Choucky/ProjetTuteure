@@ -39,7 +39,7 @@
         <!-- Image 3 -->    
         <div class="abox">
             <h1>... puis créez !</h1>
-            <img src="images/nas.jpg" alt="I love graphic" width="289" height="178" />
+            <img src="images/creation-img.png" alt="I love graphic" width="289" height="178" />
         </div>   
     </main>
 

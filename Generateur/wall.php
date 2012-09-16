@@ -49,16 +49,17 @@
                             </b>
                             &nbsp
                             &nbsp
-                            <input type="submit" value="supprimer" style="color:red;" onClick="validDeleteWebsite('.$i->getId().');"/>
-                            
+                            <input type="submit" value="supprimer" style="color:red;" onClick="validDeleteWebsite('.$i->getId().');"/>                            
                         </div>';               
-            }
-            
-            
+            }          
         }
                 
     }
-    echo '</main>';
+    echo '<div class="abox">
+            <a href="addWebSite.php">
+                <img src="images/newWebSite.png" alt="addWebSite" width="289" height="175" class="wallImg" />
+            </a>
+          </div></main>';
     
     echo '<script type="text/javascript" src="js/deleteWebsite.js"></script>';
 

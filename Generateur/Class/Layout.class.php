@@ -136,7 +136,8 @@ class Layout
                                                 <h2 class="ca-main"><span style="color:blue;">IMAGINE</span><br />Mon wall</h2>
                                                 <h3 class="ca-sub">Accès à mes sites.</h3>
                                             </div>
-                                        </a>                    </li>
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="mailto:elodie16.p@gmail.com">
                                             <span class="ca-icon">c</span>

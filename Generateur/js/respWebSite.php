@@ -20,4 +20,31 @@
             echo "error";
         }
     }
+    else if( $_GET['action'] == "saveInfos" )
+    {
+        $title = (isset( $_GET['title'] )) ? $_GET['title'] : ""; 
+        $section = (isset( $_GET['section'] )) ? $_GET['section'] : ""; 
+        $nav = (isset( $_GET['nav'] )) ? $_GET['nav'] : ""; 
+        $tagline = (isset( $_GET['tagline'] )) ? $_GET['tagline'] : ""; 
+        $footer = (isset( $_GET['footer'] )) ? $_GET['footer'] : ""; 
+        $idInfo = (isset( $_GET['idInfo'] )) ? $_GET['idInfo'] : ""; 
+
+        $info = new IYWSInformation( $idInfo );
+        $confirm = $info    ->setTitle( $title )
+                            ->setSection( $section )
+                            ->setNav( $nav )
+                            ->setTagline( $tagline )
+                            ->setFooter( $footer )
+                            ->store();
+
+        if( $confirm )
+        {
+            echo "success";
+        }
+        else
+        {
+            echo "error";
+        }
+
+    }
 ?>

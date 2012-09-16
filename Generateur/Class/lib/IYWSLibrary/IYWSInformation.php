@@ -186,7 +186,6 @@ class IYWSInformation extends IYWSDatabase
                                                             . "WHERE id_info=" . $this->db->quote($this->id) 
                                         );
 
-                var_dump($query);
 			    $this->error = IYWS_OK;
 			    return true;
             }

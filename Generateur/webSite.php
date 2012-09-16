@@ -37,48 +37,52 @@
 
                                              "
                                 >
+                                    <br />
                                     <tr>
                                         <td><label for="changeTitle">Titre :</label></td>
-                                        <td><input type="text" id="changeTitle" onKeyUp="modifyField(0, this.value);" value="' . $info->getTitle() . '" size="25" /><br /></td>
+                                        <td><input type="text" id="changeTitle" onKeyUp="modifyField(\'title\', this.value);" value="' . $info->getTitle() . '" size="25" /><br /></td>
                                     </tr>
                                     <tr>
                                         <td><label for="changeTagline">Phrase perso :</label></td>
-                                        <td><input type="text" id="changeTagline" onKeyUp="modifyField(1, this.value);" value="' . $info->getTagLine() . '" size="25" /><br /></td>
+                                        <td><input type="text" id="changeTagline" onKeyUp="modifyField(\'tagline\', this.value);" value="' . $info->getTagLine() . '" size="25" /><br /></td>
                                     </tr>
                                     <tr>
                                         <td><label for="changeNav">Section :</label></td>
-                                        <td><textarea id="changeNav" onKeyUp="modifyField(2, this.value);">' . $info->getNav() . '</textarea><br /></td>
+                                        <td><textarea id="changeNav" onKeyUp="modifyField(\'sidebar\', this.value);">' . $info->getNav() . '</textarea><br /></td>
                                         <td>
-                                            <img src="images/console_icons/text_bold.png" alt="bold" id="boldNav"/>
-                                            <img src="images/console_icons/text_italic.png" alt="italic" id="italicNav" />
-                                            <img src="images/console_icons/text_underline.png" alt="underline" id="underlineNav"/>
-                                            <img src="images/console_icons/image_add.png" alt="add image" id="imageNav"/>
-                                            <img src="images/console_icons/film.png" alt="film" id="filmNav"/>
+                                            <img src="images/console_icons/text_bold.png" onClick="modifyBold(\'changeNav\');" alt="bold" id="boldNav"/>
+                                            <img src="images/console_icons/text_italic.png" onClick="modifyItalic(\'changeNav\');" alt="italic" id="italicNav" />
+                                            <img src="images/console_icons/text_underline.png" onClick="modifyUnderline(\'changeNav\');" alt="underline" id="underlineNav"/>
+                                            <img src="images/console_icons/image_add.png" onClick="modifyImage(\'changeNav\');" alt="add image" id="imageNav"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><label for="changeSection">Corps du site :</label></td>
-                                        <td><textarea id="changeSection" onKeyUp="modifyField(3, this.value);">' . $info->getSection() . '</textarea><br /></td>
+                                        <td><textarea id="changeSection" onKeyUp="modifyField(\'section\', this.value);">' . $info->getSection() . '</textarea><br /></td>
                                         <td>
-                                            <img src="images/console_icons/text_bold.png" alt="bold" id="boldSection" />
-                                            <img src="images/console_icons/text_italic.png" alt="italic" id="italicSection" />
-                                            <img src="images/console_icons/text_underline.png" alt="underline" id="underlineSection"/>
-                                            <img src="images/console_icons/image_add.png" alt="add image" id="imageSection"/>
-                                            <img src="images/console_icons/film.png" alt="film" id="filmSection"/>
+                                            <img src="images/console_icons/text_bold.png" onClick="modifyBold(\'changeSection\');" alt="bold" id="boldSection" />
+                                            <img src="images/console_icons/text_italic.png" onClick="modifyItalic(\'changeSection\');" alt="italic" id="italicSection" />
+                                            <img src="images/console_icons/text_underline.png" onClick="modifyUnderline(\'changeSection\');" alt="underline" id="underlineSection"/>
+                                            <img src="images/console_icons/image_add.png" onClick="modifyImage(\'changeSection\');" alt="add image" id="imageSection"/>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td><label for="changeFooter">Pied de page :</label></td>
-                                        <td><textarea id="changeFooter" onKeyUp="modifyField(4, this.value);">' . $info->getFooter() . '</textarea><br /></td>
+                                        <td><textarea id="changeFooter" onKeyUp="modifyField(\'footer-outer-block\', this.value);">' . $info->getFooter() . '</textarea><br /></td>
                                         <td>
-                                            <img src="images/console_icons/text_bold.png" alt="bold" id="boldFooter" />
-                                            <img src="images/console_icons/text_italic.png" alt="italic" id="italicFooter" />
-                                            <img src="images/console_icons/text_underline.png" alt="underline" id="underlineFooter"/>
-                                            <img src="images/console_icons/image_add.png" alt="add image" id="imageSection"/>
-                                            <img src="images/console_icons/film.png" alt="film" id="filmSection"/>
+                                            <img src="images/console_icons/text_bold.png" onClick="modifyBold(\'changeFooter\');" alt="bold" id="boldFooter" />
+                                            <img src="images/console_icons/text_italic.png" onClick="modifyItalic(\'changeFooter\');" alt="italic" id="italicFooter" />
+                                            <img src="images/console_icons/text_underline.png" alt="underline" onClick="modifyUnderline(\'changeFooter\');" id="underlineFooter"/>
+                                            <img src="images/console_icons/image_add.png" onClick="modifyImage(\'changeFooter\');" alt="add image" id="imageFooter"/>
                                         </td>
                                     </tr>
+                                    <tr>
+                                        <td><input type="button" value=" Quitter " onClick="saveExit();"/></a></td>
+                                        <td></td>
+                                        <td><input type="button" value=" Enregistrer " onClick="saveInfos();" /></td>
+                                    </tr>
                                 </table>
+                                <br />
                             </div>';
                 }
             }
